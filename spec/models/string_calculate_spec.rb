@@ -32,4 +32,9 @@ RSpec.describe StringCalculate, type: :model do
   it 'supports different delimiters' do
     expect(StringCalculate.new.add("//;\n1;2")).to eq(3)
   end
+
+  it 'raises an exception for negative numbers' do
+    expect { StringCalculate.new.add("1,-2") }.to raise_error("negative numbers not allowed: -2")
+    expect { StringCalculate.new.add("1,-2,-3") }.to raise_error("negative numbers not allowed: -2, -3")
+  end
 end

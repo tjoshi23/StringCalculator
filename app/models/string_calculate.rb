@@ -7,6 +7,9 @@ class StringCalculate
     validate_numbers(numbers, delimiter)
 
     number_list = numbers.split(/,|\n|#{Regexp.escape(delimiter)}/).map(&:to_i)
+    negatives = number_list.select { |num| num < 0 }
+
+    raise "negative numbers not allowed: #{negatives.join(', ')}" if negatives.any?
 
     number_list.sum
   end
