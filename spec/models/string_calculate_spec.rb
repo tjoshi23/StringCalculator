@@ -24,4 +24,8 @@ RSpec.describe StringCalculate, type: :model do
   it 'handles newlines between numbers' do
     expect(StringCalculate.new.add("1\n2,3")).to eq(6)
   end
+
+  it 'raises an error for incorrect newline placements' do
+    expect { StringCalculate.new.add("1,\n") }.to raise_error("Incorrect newline placement")
+  end
 end
