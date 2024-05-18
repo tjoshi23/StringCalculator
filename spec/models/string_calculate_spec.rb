@@ -12,4 +12,8 @@ RSpec.describe StringCalculate, type: :model do
     expect(StringCalculate.new.add("1")).to eq(1)
     expect(StringCalculate.new.add("5")).to eq(5)
   end
+
+  it 'returns the sum of two numbers' do
+    expect(StringCalculate.new.add("1,2")).to eq(3)
+  end
 end
