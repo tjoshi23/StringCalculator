@@ -1,14 +1,17 @@
 class StringCalculate
   def add(numbers)
     return 0 if numbers.empty?
-    
+
     delimiter = get_delimiter(numbers)
+
     validate_numbers(numbers, delimiter)
 
-    number_list = numbers.split(/,|\n/).map(&:to_i)
+    number_list = numbers.split(/,|\n|#{Regexp.escape(delimiter)}/).map(&:to_i)
 
     number_list.sum
   end
+
+  private
 
   def get_delimiter(numbers)
     if numbers.start_with?("//")

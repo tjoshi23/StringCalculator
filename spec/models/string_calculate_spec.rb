@@ -28,4 +28,8 @@ RSpec.describe StringCalculate, type: :model do
   it 'raises an error for incorrect newline placements' do
     expect { StringCalculate.new.add("1,\n") }.to raise_error("Incorrect newline placement")
   end
+
+  it 'supports different delimiters' do
+    expect(StringCalculate.new.add("//;\n1;2")).to eq(3)
+  end
 end
